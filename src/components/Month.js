@@ -13,9 +13,7 @@ class Month extends Component {
     }
 
     componentWillMount() {
-        let dateStr = `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`; // need to pass this into new Date for date variable because new Date() alone gives an error
-        let date = new Date(dateStr);
-        this.showMonth(date);
+        this.goToToday()
     }
 
     showMonth = (date) => {
@@ -25,6 +23,12 @@ class Month extends Component {
             currentMonth: date.getMonth(),
             currentYear: date.getFullYear()
         }))
+    }
+
+    goToToday = () => {
+        let dateStr = `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`; // need to pass this into new Date for date variable because new Date() alone gives an error
+        let date = new Date(dateStr);
+        this.showMonth(date);
     }
 
     goToPreviousMonth = (currerMonthStart) => {
@@ -60,6 +64,7 @@ class Month extends Component {
                     currerMonthStart={this.state.currerMonthStart}
                     goToPreviousMonth={this.goToPreviousMonth}
                     goToNextMonth={this.goToNextMonth}
+                    goToToday={this.goToToday}
                 ></TableHeading>
                 <table className="month">
                     <thead>

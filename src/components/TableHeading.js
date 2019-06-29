@@ -5,9 +5,12 @@ import { faAngleLeft , faAngleRight} from "@fortawesome/free-solid-svg-icons";
 class TableHeading extends Component  {
 
     render () {
-        const {currentMonth, currentYear, currerMonthStart, goToPreviousMonth, goToNextMonth} = this.props;
+        const {currentMonth, currentYear, currerMonthStart, goToPreviousMonth, goToNextMonth, goToToday} = this.props;
         return (
             <div id="table-heading">
+                <button className="today-btn"
+                    onClick={() => goToToday()}
+                >Today</button>
                 <button className="arrow" 
                     onClick={() => goToPreviousMonth(currerMonthStart)} > <FontAwesomeIcon icon={faAngleLeft} /> </button>
                 <h2 id="month-name"> 
