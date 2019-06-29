@@ -8,13 +8,13 @@ class TableHeading extends Component  {
         const {currentMonth, currentYear, currerMonthStart, goToPreviousMonth, goToNextMonth} = this.props;
         return (
             <div id="table-heading">
-                <span className="arrow" 
-                    onClick={() => goToPreviousMonth(currerMonthStart)} > <FontAwesomeIcon icon={faAngleLeft} /> </span>
+                <button className="arrow" 
+                    onClick={() => goToPreviousMonth(currerMonthStart)} > <FontAwesomeIcon icon={faAngleLeft} /> </button>
                 <h2 id="month-name"> 
                     {currentMonth} {currentYear}
                 </h2>
-                <span className="arrow" 
-                    onClick={() => goToNextMonth(currerMonthStart)} > <FontAwesomeIcon icon={faAngleRight} /> </span>
+                <button className="arrow" 
+                    onClick={() => goToNextMonth(currerMonthStart)} > <FontAwesomeIcon icon={faAngleRight} /> </button>
             </div>
         )
     }

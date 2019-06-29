@@ -8,14 +8,13 @@ import monthList from '../data/monthList'
 
 class Month extends Component {
 
-    //TODO: pass current date on first render. Then pass dates based on previous or next month click
-
     state = {
         today: new Date(),
     }
 
     componentWillMount() {
-        let date = new Date('02/02/2019');
+        let dateStr = `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`; // need to pass this into new Date for date variable because new Date() alone gives an error
+        let date = new Date(dateStr);
         this.showMonth(date);
     }
 

@@ -2,7 +2,8 @@ $calendar-width : 700px;
 
 #month-name {
     display: inline-block;
-    padding: 0 20px 4px 20px;
+    padding: 0 5px 4px 5px;
+    width: 200px;
 }
 
 #table-heading {
@@ -12,6 +13,10 @@ $calendar-width : 700px;
 
 .arrow {
     font-size: 32px;
+    padding: 5px 10px;
+    border: none;
+    background: none;
+    outline: none;
 }
 
 .arrow:hover {
