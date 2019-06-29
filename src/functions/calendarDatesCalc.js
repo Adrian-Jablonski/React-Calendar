@@ -1,17 +1,20 @@
 function getCalendarDates(calDate) {
-    let date = new Date(calDate);
-    let firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+    let fromDate = new Date(calDate);
+    let firstDay = new Date(fromDate.getFullYear(), fromDate.getMonth(), 1);
+    let lastDay = new Date(fromDate.getFullYear(), fromDate.getMonth() + 1, 1);
+    
     let monthStartDay = firstDay.getDay();
+    let monthEndDay = lastDay.getDay();
 
+    lastDay.setDate(lastDay.getDate() + (6 - monthEndDay))
     let calendarDates = [];
 
-    date.setDate(firstDay.getDate() - monthStartDay);   // finds sunday before first day of month
+    fromDate.setDate(firstDay.getDate() - monthStartDay);   // finds sunday before first day of month   
 
-    while (date <= lastDay) {
-        let newDate = new Date(date);
+    while (fromDate <= lastDay) {
+        let newDate = new Date(fromDate);
         calendarDates.push(newDate);
-        date.setDate(newDate.getDate() + 1);
+        fromDate.setDate(newDate.getDate() + 1);
     }
 
     return calendarDates

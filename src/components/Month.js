@@ -15,7 +15,7 @@ class Month extends Component {
     }
 
     componentWillMount() {
-        let date = new Date();
+        let date = new Date('02/02/2019');
         this.showMonth(date);
     }
 
@@ -41,9 +41,9 @@ class Month extends Component {
     }
     
     render() {
-
         let weeksArr = [];
-        for (var i = 0; i < 6; i++) {
+        let weeks = this.state.calendarDates.length / 7;
+        for (var i = 0; i < weeks; i++) {
             weeksArr.push(
             <Week
                 weekNumb={i}

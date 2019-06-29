@@ -6,11 +6,12 @@ const Week = ({weekNumb, calendarDates, currentMonth, today}) => {
     let dayArr = [];
     for (var i = 0; i < 7; i++) {
         let calBoxNumber = (i+1) + (weekNumb * 7) - 1;
+        
         let curDate = calendarDates[calBoxNumber];
 
         let calDatesLen = calendarDates.length;
 
-        let dayNumber = (calBoxNumber < calDatesLen) ? curDate.getDate() : (calBoxNumber - calDatesLen) + 1;
+        let dayNumber = curDate.getDate();
 
         let isCurrentMonth = (calBoxNumber < calDatesLen) && currentMonth === curDate.getMonth();
 
