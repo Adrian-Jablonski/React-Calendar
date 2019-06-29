@@ -25,7 +25,7 @@ class Day extends Component {
     }
 
     render() {
-        const {dayNumb, isCurrentMonth, isCuurrentDate} = this.props
+        const {dayNumb, isCurrentMonth, isCuurrentDate, currentDate, currentDateEvents} = this.props
         let dayClass = 'day';
 
         if (isCuurrentDate) {
@@ -40,16 +40,17 @@ class Day extends Component {
             btnClassName = 'plus-button hide';
         }
 
-        // Add onMouseEnter
         return (
             <td className={dayClass}
                 onMouseEnter={() => this.displayPlusButton()} 
                 onMouseLeave={() => this.hidePlusButton()}
+                onClick={() => this.props.addEvent(currentDate)}
             >
                 <span>{dayNumb}</span>
                 <button className={btnClassName}>
                     <FontAwesomeIcon icon={faCalendarPlus} />
                 </button>
+                <p>{(currentDateEvents) ? currentDateEvents.length + " Events" : ""}</p>
             </td>
         )
     }

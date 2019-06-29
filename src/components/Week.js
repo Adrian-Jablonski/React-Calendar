@@ -1,7 +1,7 @@
 import React from 'react';
 import Day from './Day';
 
-const Week = ({weekNumb, calendarDates, currentMonth, today}) => {
+const Week = ({weekNumb, calendarDates, currentMonth, currentYear, today, events, addEvent}) => {
 
     let dayArr = [];
     for (var i = 0; i < 7; i++) {
@@ -17,12 +17,18 @@ const Week = ({weekNumb, calendarDates, currentMonth, today}) => {
 
         let isCuurrentDate = calBoxNumber < calDatesLen && today.getMonth() === curDate.getMonth() && today.getDate() === dayNumber;
 
+        let currentDate = `${currentMonth + 1}/${dayNumber}/${currentYear}`
+        let currentDateEvents = events[currentDate];
+
         dayArr.push(
         <Day
             dayNumb={dayNumber}
             key={calBoxNumber}
             isCurrentMonth={isCurrentMonth}
             isCuurrentDate={isCuurrentDate}
+            currentDateEvents={currentDateEvents}
+            addEvent={addEvent}
+            currentDate={currentDate}
         ></Day>)
     }
 

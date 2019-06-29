@@ -52,8 +52,11 @@ class Month extends Component {
                 weekNumb={i}
                 key={i}
                 calendarDates= {this.state.calendarDates}
+                currentYear={this.state.currentYear}
                 currentMonth={this.state.currentMonth}
                 today={this.state.today}
+                events= {this.props.events}
+                addEvent={this.props.addEvent}
             ></Week>)
         }
         return (
