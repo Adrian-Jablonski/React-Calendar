@@ -1,7 +1,7 @@
-function getCalendarDates(date) {
-    var date = new Date(date);
-    var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+function getCalendarDates(calDate) {
+    let date = new Date(calDate);
+    let firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    let lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
     let monthStartDay = firstDay.getDay();
 
     let calendarDates = [];

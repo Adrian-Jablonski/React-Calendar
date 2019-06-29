@@ -1,7 +1,21 @@
 $calendar-width : 700px;
 
 #month-name {
+    display: inline-block;
+    padding: 0 20px 4px 20px;
+}
+
+#table-heading {
     text-align: center;
+
+}
+
+.arrow {
+    font-size: 32px;
+}
+
+.arrow:hover {
+    cursor: pointer;
 }
 
 #calendar {
@@ -34,4 +48,8 @@ $calendar-width : 700px;
 
 .current-month {
     background-color: lightgray;
+}
+
+.current-date {
+    background-color: #fff3c9;
 }

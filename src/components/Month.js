@@ -1,16 +1,44 @@
 import React, {Component} from 'react';
 import Week from './Week';
 import TableHeader from './TableHeader';
+import TableHeading from './TableHeading';
 
 import getCalendarDates from '../functions/calendarDatesCalc'
+import monthList from '../data/monthList'
 
 class Month extends Component {
 
+    //TODO: pass current date on first render. Then pass dates based on previous or next month click
+
     state = {
-        calendarDates: getCalendarDates(new Date()),
-        currentMonth: new Date().getMonth()
+        today: new Date(),
     }
 
+    componentWillMount() {
+        let date = new Date();
+        this.showMonth(date);
+    }
+
+    showMonth = (date) => {
+        this.setState(() => ({
+            currerMonthStart: new Date(date.getFullYear(), date.getMonth(), 1),
+            calendarDates: getCalendarDates(date),
+            currentMonth: date.getMonth(),
+            currentYear: date.getFullYear()
+        }))
+    }
+
+    goToPreviousMonth = (currerMonthStart) => {
+        let date = new Date(currerMonthStart);
+        date.setDate(currerMonthStart.getDate() - 1);
+        this.showMonth(date);
+    }
+
+    goToNextMonth = (currerMonthStart) => {
+        let date = new Date(currerMonthStart);
+        date.setDate(currerMonthStart.getDate() + 31);
+        this.showMonth(date);
+    }
     
     render() {
 
@@ -22,11 +50,18 @@ class Month extends Component {
                 key={i}
                 calendarDates= {this.state.calendarDates}
                 currentMonth={this.state.currentMonth}
+                today={this.state.today}
             ></Week>)
         }
         return (
             <div id="calendar">
-                <h2 id="month-name">June 2019</h2>
+                <TableHeading
+                    currentMonth={monthList[this.state.currentMonth]}
+                    currentYear={this.state.currentYear}
+                    currerMonthStart={this.state.currerMonthStart}
+                    goToPreviousMonth={this.goToPreviousMonth}
+                    goToNextMonth={this.goToNextMonth}
+                ></TableHeading>
                 <table className="month">
                     <thead>
                         <TableHeader></TableHeader>
@@ -40,8 +75,6 @@ class Month extends Component {
     
         )
     }
-
-    
 }
 
 
