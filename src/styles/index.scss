@@ -1,4 +1,16 @@
+// Variables
 $calendar-width : 700px;
+
+// Mixins
+@mixin disable-btn-style {
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.hide {
+    display: none;
+}
 
 #month-name {
     display: inline-block;
@@ -8,15 +20,12 @@ $calendar-width : 700px;
 
 #table-heading {
     text-align: center;
-
 }
 
 .arrow {
     font-size: 32px;
     padding: 5px 10px;
-    border: none;
-    background: none;
-    outline: none;
+    @include disable-btn-style();
 }
 
 .today-btn {
@@ -41,10 +50,24 @@ $calendar-width : 700px;
     border: 1px solid black;
     width: $calendar-width / 7;
     height: 90px;
+    vertical-align: top;
+}
+
+.day span {
+    display: inline-block;
+    width: 95%;
+    height: 20px;
     padding-top: 5px;
     padding-right: 5px;
     text-align: right;
-    vertical-align: top;
+}
+
+.plus-button {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    @include disable-btn-style();
 }
 
 .month {
