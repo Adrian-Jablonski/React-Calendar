@@ -1,5 +1,5 @@
-function getCalendarDates() {
-    var date = new Date();
+function getCalendarDates(date) {
+    var date = new Date(date);
     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
     var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
     let monthStartDay = firstDay.getDay();

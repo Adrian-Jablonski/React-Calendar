@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Day = ({dayNumb}) => {
+const Day = ({dayNumb, isCurrentMonth}) => {
     return (
-        <td className="day">{dayNumb}</td>
+        <td className={(isCurrentMonth) ? 'day' : 'day current-month'}>{dayNumb}</td>
     )
 }
 

@@ -7,7 +7,8 @@ import getCalendarDates from '../functions/calendarDatesCalc'
 class Month extends Component {
 
     state = {
-        calendarDates: getCalendarDates()
+        calendarDates: getCalendarDates(new Date()),
+        currentMonth: new Date().getMonth()
     }
 
     
@@ -20,6 +21,7 @@ class Month extends Component {
                 weekNumb={i}
                 key={i}
                 calendarDates= {this.state.calendarDates}
+                currentMonth={this.state.currentMonth}
             ></Week>)
         }
         return (
