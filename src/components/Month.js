@@ -1,38 +1,45 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Week from './Week';
 import TableHeader from './TableHeader';
 
-const Month = () => {
+import getCalendarDates from '../functions/calendarDatesCalc'
 
-    var date = new Date();
-    var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-    let monthStartDay = firstDay.getDay();
+class Month extends Component {
 
-    let weeksArr = [];
-    for (var i = 0; i < 5; i++) {
-        weeksArr.push(
-        <Week
-            weekNumb={i}
-            key={i}
-        ></Week>)
+    state = {
+        calendarDates: getCalendarDates()
     }
 
-    return (
-        <div id="calendar">
-            <h2 id="month-name">June 2019</h2>
-            <table className="month">
-                <thead>
-                    <TableHeader></TableHeader>
-                </thead>
-                <tbody>
-                    {weeksArr}
-                </tbody>
-                
-            </table>
-        </div>
+    
+    render() {
 
-    )
+        let weeksArr = [];
+        for (var i = 0; i < 6; i++) {
+            weeksArr.push(
+            <Week
+                weekNumb={i}
+                key={i}
+                calendarDates= {this.state.calendarDates}
+            ></Week>)
+        }
+        return (
+            <div id="calendar">
+                <h2 id="month-name">June 2019</h2>
+                <table className="month">
+                    <thead>
+                        <TableHeader></TableHeader>
+                    </thead>
+                    <tbody>
+                        {weeksArr}
+                    </tbody>
+                    
+                </table>
+            </div>
+    
+        )
+    }
+
+    
 }
 
 
