@@ -28,36 +28,11 @@ class Day extends Component {
 
     render() {
         const {dayNumb, isCurrentMonth, isCuurrentDate, currentDate, currentDateEvents} = this.props
-        let dayClass = 'day';
+        let dayClass = setDayClass(isCurrentMonth, isCuurrentDate);
 
-        if (isCuurrentDate) {
-            dayClass = 'day current-date'
-        }
-        else if (!isCurrentMonth) {
-            dayClass = 'day current-month'
-        }
+        let btnClassName = (this.state.visible) ? 'plus-button' : 'plus-button hide';
 
-        let btnClassName = 'plus-button';
-        if (!this.state.visible) {
-            btnClassName = 'plus-button hide';
-        }
-
-        let eventArr = [];
-        if (currentDateEvents) {
-            let eventLen = currentDateEvents.length;
-            for (let i = 0; i < Math.min(eventLen, 3); i++){
-                eventArr.push(
-                    <EventList
-                        event= {currentDateEvents[i]}
-                        eventNumb={i+1}
-                        eventLen={eventLen}
-                        key={i}
-                    >
-                    </EventList>
-                )
-            }
-        }
-        
+        let eventArr = setEventArr(currentDateEvents);
 
         return (
             <td className={dayClass}
@@ -81,3 +56,35 @@ class Day extends Component {
 }
 
 export default Day;
+
+function setDayClass(isCurrentMonth, isCuurrentDate) {
+    let dayClass = 'day';
+
+    if (isCuurrentDate) {
+        dayClass = 'day current-date'
+    }
+    else if (!isCurrentMonth) {
+        dayClass = 'day current-month'
+    }
+
+    return dayClass;
+}
+
+function setEventArr(currentDateEvents) {
+    let eventArr = [];
+    if (currentDateEvents) {
+        let eventLen = currentDateEvents.length;
+        for (let i = 0; i < Math.min(eventLen, 3); i++){
+            eventArr.push(
+                <EventList
+                    event= {currentDateEvents[i]}
+                    eventNumb={i+1}
+                    eventLen={eventLen}
+                    key={i}
+                >
+                </EventList>
+            )
+        }
+    }
+    return eventArr;
+}
