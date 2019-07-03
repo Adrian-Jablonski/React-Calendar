@@ -56,7 +56,7 @@ class Month extends Component {
                 currentMonth={this.state.currentMonth}
                 today={this.state.today}
                 events= {this.props.events}
-                addEvent={this.props.addEvent}
+                showEventForm={this.props.showEventForm}
             ></Week>)
         }
         return (

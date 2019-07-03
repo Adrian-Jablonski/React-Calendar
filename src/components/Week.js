@@ -1,7 +1,7 @@
 import React from 'react';
 import Day from './Day';
 
-const Week = ({weekNumb, calendarDates, currentMonth, currentYear, today, events, addEvent}) => {
+const Week = ({weekNumb, calendarDates, currentMonth, currentYear, today, events, showEventForm}) => {
 
     let dayArr = [];
     for (var i = 0; i < 7; i++) {
@@ -27,7 +27,7 @@ const Week = ({weekNumb, calendarDates, currentMonth, currentYear, today, events
             isCurrentMonth={isCurrentMonth}
             isCuurrentDate={isCuurrentDate}
             currentDateEvents={currentDateEvents}
-            addEvent={addEvent}
+            showEventForm={showEventForm}
             currentDate={currentDate}
         ></Day>)
     }

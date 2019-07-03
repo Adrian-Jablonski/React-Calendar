@@ -90,3 +90,13 @@ $calendar-width : 700px;
 .current-date {
     background-color: #fff3c9;
 }
+
+#add-event-form {
+    padding: 10px 20px 40px 20px;
+    background-color: grey;
+    width: 300px;
+    margin: 0 auto;
+    position: relative;
+    bottom: 300px;
+    border-radius: 25px;
+}

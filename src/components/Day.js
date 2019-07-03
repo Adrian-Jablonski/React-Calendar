@@ -63,7 +63,7 @@ class Day extends Component {
             <td className={dayClass}
                 onMouseEnter={() => this.displayPlusButton()} 
                 onMouseLeave={() => this.hidePlusButton()}
-                onClick={() => this.props.addEvent(currentDate)}
+                onClick={() => this.props.showEventForm(currentDate)}
             >
                 <span>{dayNumb}</span>
                 <button className={btnClassName}>

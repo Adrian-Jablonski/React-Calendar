@@ -1,32 +1,51 @@
 import React, {Component} from 'react';
 import Month from './Month';
+import AddEventForm from './AddEventForm';
 
 class App extends Component {
 
   state = {
-    events: {}
+    events: {},
+    newEventDate: null
   }
 
-  addEvent = (date) => {
-    console.log("Adding Event Form " + date);
+  showEventForm = (date) => {
+    console.log("Show event Form " + date);
+    this.setState(() => {
+      return {
+        newEventDate: date
+      }
+    })
+  }
+
+  addEvent = (date, eventName) => {
+    console.log("Adding Event Form " + date + " " + eventName);
     this.setState(prevState => {
       if (prevState.events[date] === undefined) {
         prevState.events[date] = [];
       }
-      prevState.events[date].push('Event');
+      prevState.events[date].push({eventName: eventName});
       return {
-        events: prevState.events
+        events: prevState.events,
+        newEventDate: null
       }
     })
 }
 
   render() {
+    const eventForm = (this.state.newEventDate) ? <AddEventForm
+      newEventDate={this.state.newEventDate}
+      addEvent={this.addEvent}
+    ></AddEventForm> 
+    : null;
+
     return (
       <div>
           <Month
             events= {this.state.events}
-            addEvent={this.addEvent}
+            showEventForm={this.showEventForm}
           ></Month>
+          {eventForm}
       </div>
     );
   }
